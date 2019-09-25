@@ -2,7 +2,12 @@ language: go
 go:
   - 1.9
   - tip
-install: make fetch
+os:
+  - linux
+  - windows
+install:
+  - if [ "$TRAVIS_OS_NAME" = windows ]; then choco install -y make && which -a make; fi
+  - make fetch
 before_script:
   - mkdir -p "$GOPATH/src/github.com/shyiko" && ln -s "$GOPATH/src/github.com/kai2nenobu/jabba" "$GOPATH/src/github.com/shyiko/jabba"
 script: make test
