@@ -4,6 +4,7 @@ go:
   - 1.x
 os:
   - linux
+  - osx
   - windows
 install:
   - if [ "$TRAVIS_OS_NAME" = windows ]; then choco install -y make && which -a make; fi
